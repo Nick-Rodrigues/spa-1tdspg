@@ -12,15 +12,14 @@ export default function App() {
     // area imperativa
     <div className="container">
 
-        <Cabecalho nomeDoUsuario={meuNome}>
-          Hellow World!
-        </Cabecalho>
+      <Cabecalho nomeDoUsuario={meuNome}>
+        Hellow World!
+      </Cabecalho>
 
-        <Conteudo/>
-        <Rodape/>
-      
-      
+      <Conteudo/>
 
+      <Rodape/>
+      
     </div>
   )
 }
