@@ -1,7 +1,15 @@
+import { Link } from "react-router-dom";
+import { ListaProdutos } from "../components/ListaProdutos";
+import { AiOutlineEdit as Editar, AiOutlineDelete as Excluir} from "react-icons/ai";
 import "./Produtos.css";
-import { listaProdutos } from "../components/ListaProdutos";
 
 export default function Produtos() {
+
+    const estiloImg = {
+        widht: "100px",
+        height: "100px"
+    }
+
     return(
         <>
             <div>
@@ -11,17 +19,21 @@ export default function Produtos() {
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Descrição</th>
                         <th>Preço</th>
-                        <th>Editar/Excluir</th>
+                        <th>IMG</th>
+                        <th><Editar/> / <Excluir/></th>
                     </tr>
 
-                    {listaProdutos.map( (produto, indice) => (
+                    {ListaProdutos.map( (produto, indice) => (
                         <tr key={indice}>
                             <td>{produto.id}</td>
                             <td>{produto.nome}</td>
+                            <td>{produto.desc}</td>
                             <td>{produto.preco}</td>
-                            <td> <link to={`/editar/produtos/${produto.id}`}>Editar</link> / 
-                            <link to={`/excluir/produto/${produto.id}`}>Excluir</link></td>
+                            <td><img style={estiloImg} src={`${produto.img}`} alt={`${produto.desc}`}/></td>
+                            <td><Link to={`/editar/produto/${produto.id}`}><Editar/></Link> / 
+                            <Link to={`/excluir/produto/${produto.id}`}><Excluir/></Link></td>
                         </tr>
                     ))}
 
