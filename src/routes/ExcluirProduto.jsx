@@ -37,7 +37,7 @@ export default function ExcluirProduto() {
   return (
     <>
       <h1>Excluir - Produto</h1>
-      <div></div>
+      <div>
         <h2>{`Deseja realmente excluir o produto ${produto.nome}?`}</h2>
         <div>
           <button onClick={handleDelete}>Excluir</button>
