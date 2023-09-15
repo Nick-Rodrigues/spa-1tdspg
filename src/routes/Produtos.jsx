@@ -7,11 +7,27 @@ import { useEffect, useState } from "react";
 
 export default function Produtos() {
 
+    document.title = "Produtos";
+
     const [counter, setCounter] = useState(0);
+    const [novaListaProdutos, setNovaListaProdutos] = useState([{}])
+    const [counter2, setCounter2] = useState(0)
+
 
     useEffect(() => {
         console.log("useEffetc que renderiza sempre!")
     });
+
+    useEffect(() => {
+        setNovaListaProdutos(ListaProdutos);
+        console.log("useEffetc que renderiza apenas uma vez!")
+    },[ ]);
+
+    useEffect(() => {
+        console.log("useEffetc que renderiza apenas se o objeto/elemento/constante que está sendo monitorado no array de dependencias sofrer atualização!")
+    },[counter2]);
+
+
 
     return(
         <>
@@ -21,36 +37,38 @@ export default function Produtos() {
                     <div>
                         <button onClick={() => setCounter(counter + 1)}>Counter - {counter}</button>
                     </div>
+                    <div>
+                        <button onClick={() => setCounter2(counter2 + 1)}>Counter2 - {counter2}</button>
+                    </div>
 
                 <table className={classes.tabelaProd}>
 
-                    <thead>
+                    <thead className={classes.tabelaCabecalho}>
                     <tr>
-                        <th className={classes.tabelaCabecalho}>ID</th>
-                        <th className={classes.tabelaCabecalho}>Nome</th>
-                        <th className={classes.tabelaCabecalho}>Descrição</th>
-                        <th className={classes.tabelaCabecalho}>Preço</th>
-                        <th className={classes.tabelaCabecalho}>IMG</th>
-                        <th className={classes.tabelaCabecalho}><Editar/> / <Excluir/></th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                        <th>IMG</th>
+                        <th><Editar/> / <Excluir/></th>
                     </tr>
                     </thead>
-                    <tbody>
-                    {ListaProdutos.map( (produto, indice) => (
-
-                        <tr className={classes.tabelaLinha} key={indice} >
-                            <td className={classes.tabelaDados}>{produto.id}</td>
-                            <td className={classes.tabelaDados}>{produto.nome}</td>
-                            <td className={classes.tabelaDados}>{produto.desc}</td>
-                            <td className={classes.tabelaDados}>{produto.preco}</td>
-                            <td className={classes.tabelaDados}><img className={classes.tblImg} src={`${produto.img}`} alt={`${produto.desc}`}/></td>
-                            <td className={classes.tabelaDados}><Link to={`/editar/produto/${produto.id}`}><Editar/></Link> / 
+                    <tbody className={classes.tabelaCorpo}>
+                    {novaListaProdutos.map( (produto, indice) => (
+                        <tr key={indice}>
+                            <td>{produto.id}</td>
+                            <td>{produto.nome}</td>
+                            <td>{produto.desc}</td>
+                            <td>{produto.preco}</td>
+                            <td><img className={classes.tblImg} src={`${produto.img}`} alt={`${produto.desc}`}/></td>
+                            <td><Link to={`/editar/produto/${produto.id}`}><Editar/></Link> / 
                             <Link to={`/excluir/produto/${produto.id}`}><Excluir/></Link></td>
                         </tr>
                     ))}
                     </tbody>
-                    <tfoot>
+                    <tfoot className={classes.tabelaRodape}>
                         <tr>
-                            <td colSpan={6}>Produtos</td>
+                            <td colSpan={6}>Produtos informáticos - QTD = {novaListaProdutos.length}</td>
                         </tr>
                     </tfoot>
                 </table>
