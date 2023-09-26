@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-// import { ListaProdutos } from "../components/ListaProdutos";
+import { ListaProdutos } from "../components/ListaProdutos";
 import { AiOutlineEdit as Editar, AiOutlineDelete as Excluir} from "react-icons/ai";
 import classes from "./Produtos.module.css";
 import { useEffect, useState } from "react";
@@ -12,28 +12,28 @@ export default function Produtos() {
 
     const [novaListaProdutos, setNovaListaProdutos] = useState([{}])
 
-    // useEffect(() => {
-    //     setNovaListaProdutos(ListaProdutos);
-    //     console.log("useEffetc que renderiza apenas uma vez!")
-    // },[ ]);
-
     useEffect(() => {
-
-        //fetch = API do javascript para realizar requisições/requests, ele utiliza como parametro uma URL ou URI.
-        //fetch(http://minhaApi.com.br/exemplos)
-        fetch("http://localhost:5000/produtos", {
-            method: "get",
-            headers:{
-                "Content-Type" : "application/json" 
-            }
-        })
-        .then((response)=> response.json())
-        .then((data)=> {
-            setNovaListaProdutos(data)
-        })
-        .catch(error => console.log(error))
-
+        setNovaListaProdutos(ListaProdutos);
+        // console.log("useEffetc que renderiza apenas uma vez!")
     },[ ]);
+
+    // useEffect(() => {
+
+    //     //fetch = API do javascript para realizar requisições/requests, ele utiliza como parametro uma URL ou URI.
+    //     //fetch(http://minhaApi.com.br/exemplos)
+    //     fetch("http://localhost:5000/produtos", {
+    //         method: "get",
+    //         headers:{
+    //             "Content-Type" : "application/json" 
+    //         }
+    //     })
+    //     .then((response)=> response.json())
+    //     .then((data)=> {
+    //         setNovaListaProdutos(data)
+    //     })
+    //     .catch(error => console.log(error))
+
+    // },[ ]);
 
     const [open, setOpen] = useState(false)
 
