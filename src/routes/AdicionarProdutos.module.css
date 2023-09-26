@@ -1,0 +1,20 @@
+.formularioadd{
+    font-weight: bold;
+
+    & button{
+        color: black;
+    }
+
+    & div{
+        color: black;
+    }
+    
+    & legend{
+        color: black;
+    }
+
+    & fieldset{
+        border: 4px solid black;
+        padding: 5%;
+    }
+}

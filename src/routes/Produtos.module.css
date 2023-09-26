@@ -4,7 +4,7 @@
     border: 2px solid #ccc;
 
     .tabelaCabecalho{
-        background-color: #ebad57;
+        background-color: #cd0d70;
         & th{
             border: 2px solid #ccc;  
             text-align: center;         
@@ -13,10 +13,13 @@
 
 
     .tabelaCorpo{
+        background-color: black;
+        color: white;
+        text-align: center;
         & tr{
             height: 48px !important;
             &:hover{
-                background-color: #eeee;
+                background-color: #595858ee;
             }
 
             & td{
@@ -44,7 +47,7 @@
     }
 
     .tabelaRodape{
-        background-color: #ebad57;
+        background-color: #cd0d70;
         &td {
             text-align: center;
             font-weight: bold;
