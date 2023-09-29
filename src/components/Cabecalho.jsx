@@ -8,7 +8,6 @@ export default function Cabecalho(){
                 <ul>
                     <li><Link to="/">HOME</Link></li>
                     <li><Link to="/produtos">Produtos</Link></li>
-                    <li><Link to="/adicionar/produto">Adicionar produto</Link></li>
                 </ul>
             </header>
 
