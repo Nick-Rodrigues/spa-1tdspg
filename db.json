@@ -90,13 +90,6 @@
       "desc": "SSD Gamer",
       "preco": 200,
       "img": "https://picsum.photos/200/300"
-    },
-    {
-      "nome": "dasdas",
-      "preco": "das",
-      "desc": "das",
-      "img": "dasd",
-      "id": 14
     }
   ]
 }
