@@ -24,7 +24,7 @@ export default function Produtos() {
     if (!open) {
       //fetch = API do Javascript para realizar requisições/requests, ele utiliza como parâmetro uma URL ou URI.
       //fetch(http://minhaApi.com.br/exemplos)
-      fetch("http://localhost:5000/produtos", {
+      fetch("http://localhost:5000/produtos/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -37,6 +37,20 @@ export default function Produtos() {
         .catch((error) => console.log(error));
     }
   }, [open]);
+
+  const handleExcluir = (id) => {
+    fetch(`http://localhost:5000/produtos${id}`,{
+      method: "DELETE",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(id)      
+    })
+    .then((response)=> console.log(response.status))
+    .catch(error => console.log(error));
+
+    // window.location("/produtos");
+  }
 
   return (
     <>
@@ -80,7 +94,7 @@ export default function Produtos() {
                     <Editar />
                   </Link>{" "}
                   /{" "}
-                  <Link to={`/excluir/produto/${produto.id}`}>
+                  <Link onClick={()=> handleExcluir(produto.id)}>
                     <Excluir />
                   </Link>{" "}
                 </td>
