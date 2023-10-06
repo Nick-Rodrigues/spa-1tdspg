@@ -41,13 +41,6 @@
       "desc": "Mousepad Gamer",
       "preco": 30,
       "img": "https://picsum.photos/200/300"
-    },
-    {
-      "id": 7,
-      "nome": "Cadeira",
-      "desc": "Cadeira Gamer",
-      "preco": 400,
-      "img": "https://picsum.photos/200/300"
     }
   ]
 }

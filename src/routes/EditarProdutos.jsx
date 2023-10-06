@@ -29,10 +29,10 @@ export default function EditarProdutos() {
     setProdutoEditado({ ...produtoEditado, [name]: value });
   };
 
-  const handleEditar = async (event) => {
+  const handleEditar = (event) => {
     event.preventDefault();
 
-    const response = await fetch(`http://localhost:5000/produtos/${id}`, {
+    const response = fetch(`http://localhost:5000/produtos/${id}`, {
     method: "PUT",
     headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export default function EditarProdutos() {
       <div className="container">
         <form onSubmit={handleEditar}>
           <fieldset>
-            <legend>EDITAR PRODUTO</legend>
+            <legend>Editar produto</legend>
             <div>
               <label htmlFor="idProduto">Nome Produto:</label>
               <input
