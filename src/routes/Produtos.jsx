@@ -54,7 +54,9 @@ export default function Produtos() {
     <>
       <div>
 
-        {open ? <ModalExemplo open={open} setOpen={setOpen} /> : ""}
+        <h1>Produtos</h1>
+        { open ? <ModalExemplo open={open} setOpen={setOpen}/> : "" }
+        <Link onClick={() => setOpen(true)}>Adicionar Produto</Link>
 
         <table className={classes.tabelaProd}>
           <thead className={classes.tabelaCabecalho}>
