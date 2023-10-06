@@ -13,53 +13,48 @@ export default function Produtos() {
 
   const [novaListaProdutos, setNovaListaProdutos] = useState([{}]);
 
-  // useEffect(() => {
-  //   setNovaListaProdutos(ListaProdutos);
-  //   console.log("useEffect que renderiza apenas uma vez!");
-  // }, []);
-
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (!open) {
       //fetch = API do Javascript para realizar requisições/requests, ele utiliza como parâmetro uma URL ou URI.
       //fetch(http://minhaApi.com.br/exemplos)
-      fetch("http://localhost:5000/produtos/", {
+      fetch("http://localhost:5000/produtos", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       })
-        .then((response) => response.json())
-        .then((data) => {
-          setNovaListaProdutos(data);
-        })
-        .catch((error) => console.log(error));
+      .then((response) => response.json())
+      .then((data) => {
+        setNovaListaProdutos(data);
+      })
+      .catch((error) => console.log(error));
     }
   }, [open]);
+  
 
   const handleExcluir = (id) => {
-    fetch(`http://localhost:5000/produtos${id}`,{
-      method: "DELETE",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body: JSON.stringify(id)      
-    })
-    .then((response)=> console.log(response.status))
-    .catch(error => console.log(error));
 
-    // window.location("/produtos");
+    fetch(`http://localhost:5000/produtos/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        }
+    })
+
+    .then((response) => console.log(response.status))
+    .catch((error) => console.log(error))
+
+    window.location("produtos");
+
   }
 
   return (
     <>
       <div>
-        <h1>PRODUTOS</h1>
 
         {open ? <ModalExemplo open={open} setOpen={setOpen} /> : ""}
-
-        <Link onClick={() => setOpen(true)}>Adicionar Produto</Link>
 
         <table className={classes.tabelaProd}>
           <thead className={classes.tabelaCabecalho}>
@@ -91,16 +86,17 @@ export default function Produtos() {
                 <td>
                   {" "}
                   <Link to={`/editar/produto/${produto.id}`}>
-                    <Editar />
+                    <Editar/>
                   </Link>{" "}
                   /{" "}
-                  <Link onClick={()=> handleExcluir(produto.id)}>
-                    <Excluir />
+                  <Link onClick={() => handleExcluir(produto.id)}>
+                    <Excluir/>
                   </Link>{" "}
                 </td>
               </tr>
             ))}
           </tbody>
+
           <tfoot className={classes.tabelaRodape}>
             <tr>
               <td colSpan={6}>
